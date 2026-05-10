@@ -1,3 +1,1 @@
-# VOID DICE
 
-## Project Description
