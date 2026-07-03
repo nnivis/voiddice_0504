@@ -21,7 +21,7 @@ namespace CodeBase.Domain.Character
         public Character SpawnCharacter()
         {
             Character character = Instantiate(_prefab, _spawnPoint.position, Quaternion.identity);
-            character.onDead += (GameOverType) => _gamePlayMediator.NotifyGameOver(character.GameOverType);
+            character.onDead += (gameOverType) => _gamePlayMediator.NotifyGameOver(character.GameOverType);
             character.Initialization(_config);
             character.transform.SetParent(_spawnPoint);
             character.transform.localScale = new Vector3(BaseScale, BaseScale, BaseScale);

@@ -7,9 +7,7 @@ namespace CodeBase.Services.GamePlay
     {
         [SerializeField] private TimerView _timerView;
 
-        public void UpdateTimerView(float defaultTimer, float currentTimer)
-        {
+        public void UpdateTimerView(float defaultTimer, float currentTimer) => 
             _timerView.UpdateTimerInfo(defaultTimer, currentTimer);
-        }
     }
 }

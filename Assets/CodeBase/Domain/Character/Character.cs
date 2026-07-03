@@ -33,6 +33,8 @@ namespace CodeBase.Domain.Character
 
         public void ApplyHealing(int amount)
         {
+            _healthComponent.IncreaseHealth(amount);
+            _viewComponent.UpdateHealth(CurrentHealth, MaxHealth);
         }
 
         private void Death()

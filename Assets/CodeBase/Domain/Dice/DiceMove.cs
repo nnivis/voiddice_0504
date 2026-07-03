@@ -7,7 +7,7 @@ namespace CodeBase.Domain.Dice
         private Rigidbody2D _rigidBody2D;
         private float _baseSpeed;
         private float _maxSpeed = Mathf.Infinity;
-        public float _currentSpeed { get; set; }
+        public float CurrentSpeed { get; set; }
 
         public void Initialization(Rigidbody2D rigidbody2D, float speed)
         {
@@ -22,7 +22,7 @@ namespace CodeBase.Domain.Dice
 
             Vector2 direction = new Vector2(x, y).normalized;
             _rigidBody2D.AddForce(direction * _baseSpeed, ForceMode2D.Impulse);
-            _currentSpeed = _baseSpeed;
+            CurrentSpeed = _baseSpeed;
         }
 
         public void ResetPosition()
@@ -34,8 +34,8 @@ namespace CodeBase.Domain.Dice
         public void UpdateMovement()
         {
             Vector2 direction = _rigidBody2D.linearVelocity.normalized;
-            _currentSpeed = Mathf.Min(_currentSpeed, _maxSpeed);
-            _rigidBody2D.linearVelocity = direction * _currentSpeed;
+            CurrentSpeed = Mathf.Min(CurrentSpeed, _maxSpeed);
+            _rigidBody2D.linearVelocity = direction * CurrentSpeed;
         }
     }
 }

@@ -23,10 +23,10 @@ namespace CodeBase.Domain
                 switch (forceType)
                 {
                     case ForceType.Additive:
-                        dice._currentSpeed += bounceStrength;
+                        dice.CurrentSpeed += bounceStrength;
                         break;
                     case ForceType.Multiplicative:
-                        dice._currentSpeed *= bounceStrength;
+                        dice.CurrentSpeed *= bounceStrength;
                         break;
                 }
             }

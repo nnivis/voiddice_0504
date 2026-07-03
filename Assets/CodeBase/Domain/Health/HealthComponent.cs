@@ -22,5 +22,10 @@ namespace CodeBase.Domain.Health
         {
             _currentHealth = Mathf.Max(_currentHealth - damage, 0);
         }
+
+        public void IncreaseHealth(int amount)
+        {
+            _currentHealth = Mathf.Min(_currentHealth + amount, _maxHealth);
+        }
     }
 }

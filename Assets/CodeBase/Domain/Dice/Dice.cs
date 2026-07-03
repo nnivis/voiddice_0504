@@ -8,7 +8,9 @@ namespace CodeBase.Domain.Dice
     [RequireComponent(typeof(Rigidbody2D))]
     public class Dice : MonoBehaviour
     {
-        public event Action OnDestroyed;
+        public event Action<Dice> OnDestroyed;
+        public DiceType CurrentType => _currentType;
+        public int AbilityValue => _valueAbility;
         private Rigidbody2D _rigidBody2D;
         private int _valueAbility;
         private float _speed = 2.5f;
@@ -43,7 +45,7 @@ namespace CodeBase.Domain.Dice
         public void OnMassegeDiceLeftClick()
         {
             _abilityMediator.HandleDiceAbility(_currentType, _valueAbility);
-            OnDestroyed?.Invoke();
+            OnDestroyed?.Invoke(this);
             Destroy(gameObject);
         }
 

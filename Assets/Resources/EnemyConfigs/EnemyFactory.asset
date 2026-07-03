@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _configs:
   - _prefab: {fileID: 6306669883798291654, guid: e9ff581b4aeef5d469c4adb12b9323c0, type: 3}
-    _health: 100
+    _health: 10
+    _attackDamage: 20
   - _prefab: {fileID: -2448470813235181065, guid: 8e2ba3852668421448c5a9f575ea0451, type: 3}
-    _health: 100
+    _health: 10
+    _attackDamage: 20

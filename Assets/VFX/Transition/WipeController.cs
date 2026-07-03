@@ -13,7 +13,11 @@ namespace CodeBase.Infrastructure.SceneLoad
         private readonly int _circleSizeId = Shader.PropertyToID("_Circle_Size");
         private bool _transitionCompletedFired = false;
 
-        public void AnimateIn() => _animator.SetTrigger("In");
+        public void AnimateIn()
+        {
+            _transitionCompletedFired = true; // блокируем повторный fire пока играет AnimateIn
+            _animator.SetTrigger("In");
+        }
 
         public void AnimateOut()
         {

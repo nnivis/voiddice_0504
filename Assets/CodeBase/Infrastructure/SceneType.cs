@@ -8,5 +8,6 @@ namespace CodeBase.Infrastructure
         Settings,
         EndGame,
         WinGame,
+        LevelAllFightsComplete,
     }
 }

@@ -69,6 +69,7 @@ namespace CodeBase.Domain.LevelBuild
 
         private void DestroyLevel()
         {
+            _isLevelBuild = false;  // сбрасываем флаг — уровень завершён
             _progressGameMediator.LevelComplete();
             _rollDicePanel.gameObject.SetActive(true);
             _levelProgressPanel.gameObject.SetActive(false);
@@ -80,7 +81,8 @@ namespace CodeBase.Domain.LevelBuild
             if (_currentNumberOfPartLevel == _numberOfPartLevel)
             {
                 DestroyLevel();
-                _transitionSceneMediator.NotifyTransition(SceneType.StartGame);
+                // Все бои в уровне пройдены → специальное состояние
+                _transitionSceneMediator.NotifyTransition(SceneType.LevelAllFightsComplete);
             }
             else
             {
@@ -93,6 +95,15 @@ namespace CodeBase.Domain.LevelBuild
         {
             if (_isLevelBuild)
                 UpdateProgressLevle();
+        }
+
+        // Сброс при выборе нового уровня из меню
+        public void ResetForNewLevel()
+        {
+            _isLevelBuild = false;
+            ResetCurrentLevel();
+            _rollDicePanel.gameObject.SetActive(true);
+            _levelProgressPanel.gameObject.SetActive(false);
         }
     }
 }

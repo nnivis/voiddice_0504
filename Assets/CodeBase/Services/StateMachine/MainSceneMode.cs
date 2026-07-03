@@ -10,5 +10,6 @@ namespace CodeBase.Services.StateMachine
         public void GotoMainGameFight() => ChangeState<GameFightState>();
         public void GotoWinGame() => ChangeState<WinGameState>();
         public void GotoEndGame() => ChangeState<EndGameState>();
+        public void GotoLevelAllFightsComplete() => ChangeState<LevelAllFightsCompleteState>();
     }
 }

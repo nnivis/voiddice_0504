@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using CodeBase.Infrastructure;
 
 namespace CodeBase.Infrastructure.SceneLoad
 {

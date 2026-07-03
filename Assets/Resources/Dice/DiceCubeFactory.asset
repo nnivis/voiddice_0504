@@ -25,5 +25,5 @@ MonoBehaviour:
   _health:
     _prefab: {fileID: 4151209465868562113, guid: aa2373862a6bf5f4a89f413d63c7fabb, type: 3}
     _icon: {fileID: 21300000, guid: 940f8de9b5d11da4fb8c28a0b801f4bf, type: 3}
-    _value: 1
+    _value: 10
     _type: 2

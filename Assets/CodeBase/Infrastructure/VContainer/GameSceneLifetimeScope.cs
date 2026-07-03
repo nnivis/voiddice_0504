@@ -9,6 +9,7 @@ using CodeBase.Domain.Player;
 using CodeBase.Domain.Player.Input;
 using CodeBase.Infrastructure.SceneLoad;
 using CodeBase.Services.GamePlay;
+using CodeBase.Services.StateMachine;
 
 namespace CodeBase.Infrastructure.VContainer
 {
@@ -36,13 +37,13 @@ namespace CodeBase.Infrastructure.VContainer
             RegisterInHierarchyIfFound<LocationHandler>(builder, asInterfaces: true);
             RegisterInHierarchyIfFound<LevelProgressHandler>(builder);
             RegisterInHierarchyIfFound<GameFightHandler>(builder);
-            RegisterInHierarchyIfFound<GameFightEnder>(builder);
             RegisterInHierarchyIfFound<CharacterSpawner>(builder);
             RegisterInHierarchyIfFound<EnemySpawner>(builder);
             RegisterInHierarchyIfFound<Player>(builder);
             RegisterInHierarchyIfFound<TransitionScene>(builder);
-            RegisterInHierarchyIfFound<CodeBase.Domain.Dice.DiceSpawner>(builder);
-            RegisterInHierarchyIfFound<CodeBase.Services.Timer.Timer>(builder);
+            RegisterInHierarchyIfFound<Domain.Dice.DiceSpawner>(builder);
+            RegisterInHierarchyIfFound<Services.Timer.Timer>(builder);
+            RegisterInHierarchyIfFound<MainSceneMode>(builder);
         }
 
         private void RegisterInHierarchyIfFound<T>(IContainerBuilder builder, bool asInterfaces = false)

@@ -6,9 +6,7 @@ namespace CodeBase.Services.GamePlay
     {
         [SerializeField] GameFightPanel _gameFightPanel;
 
-        public void UpdateTimerInfo(float defaultTimer, float currentTimer)
-        {
+        public void UpdateTimerInfo(float defaultTimer, float currentTimer) => 
             _gameFightPanel.UpdateTimerView(defaultTimer, currentTimer);
-        }
     }
 }

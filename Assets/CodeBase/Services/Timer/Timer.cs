@@ -7,9 +7,8 @@ namespace CodeBase.Services.Timer
     public class Timer : MonoBehaviour
     {
         [SerializeField] private GameFightViewMediator _gameFightViewMediator;
-        private const float _defaultTimer = 15f;
+        [SerializeField] private float _defaultTimer = 15f;
         private GamePlayMediator _gamePlayMediator;
-        private GameFightEndReason _gameFightEndReason;
         private float _currentTimer;
         private bool _isTimerStart;
         public float CurrentTimer => _currentTimer;
@@ -19,9 +18,13 @@ namespace CodeBase.Services.Timer
         private void Construct(GamePlayMediator gamePlayMediator)
         {
             _gamePlayMediator = gamePlayMediator;
-            _gameFightEndReason = GameFightEndReason.TimeUp;
             _isTimerStart = false;
         }
+
+        private void OnEnable() => _gamePlayMediator.OnGameOver += StopTimer;
+        private void OnDisable() => _gamePlayMediator.OnGameOver -= StopTimer;
+
+        private void StopTimer(GameFightEndReason _) => _isTimerStart = false;
 
         public void StartTimer()
         {
@@ -57,7 +60,7 @@ namespace CodeBase.Services.Timer
 
         private void HandleTimerExpiration()
         {
-            _gamePlayMediator.NotifyGameOver(_gameFightEndReason);
+            _gamePlayMediator.NotifyTurnExpired();
         }
     }
 }

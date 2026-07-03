@@ -12,16 +12,19 @@ namespace CodeBase.Domain.Enemy
         public Action onDamage;
         private HealthComponent _healthComponent;
         private GameFightEndReason _gameOverType;
+        private EnemyConfig _config;
         [SerializeField] private ViewHealthComponent _viewComponent;
 
         public virtual void Initialize(EnemyConfig config)
         {
+            _config = config;
             _healthComponent = new HealthComponent(config.MaxHealth);
             _gameOverType = GameFightEndReason.EnemyDeath;
         }
 
         public int CurrentHealth => _healthComponent.currentHealth;
         public int MaxHealth => _healthComponent.maxHealth;
+        public int AttackDamage => _config.AttackDamage;
 
         public void ApplyDamage(int damage)
         {
@@ -34,7 +37,8 @@ namespace CodeBase.Domain.Enemy
 
         public void ApplyHealing(int amount)
         {
-            Debug.Log("Enemy Health");
+            _healthComponent.IncreaseHealth(amount);
+            _viewComponent.UpdateHealth(CurrentHealth, MaxHealth);
         }
 
         private void Death()

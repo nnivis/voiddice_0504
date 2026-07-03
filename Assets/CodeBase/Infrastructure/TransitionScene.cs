@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using VContainer;
 using CodeBase.Infrastructure.SceneLoad;
@@ -8,7 +7,6 @@ namespace CodeBase.Infrastructure
 {
     public class TransitionScene : MonoBehaviour
     {
-        public Action OnTransitionOutComplete;
         [SerializeField] MainSceneMode _mainSceneMode;
         [SerializeField] WipeController _wipeController;
         private TransitionSceneMediator _transitionSceneMediator;
@@ -41,6 +39,7 @@ namespace CodeBase.Infrastructure
                 case SceneType.Settings: _mainSceneMode.GotoSettings(); break;
                 case SceneType.EndGame: _mainSceneMode.GotoEndGame(); break;
                 case SceneType.WinGame: _mainSceneMode.GotoWinGame(); break;
+                case SceneType.LevelAllFightsComplete: _mainSceneMode.GotoLevelAllFightsComplete(); break;
                 default: Debug.LogWarning("Unknown scene type."); break;
             }
             _wipeController.AnimateIn();

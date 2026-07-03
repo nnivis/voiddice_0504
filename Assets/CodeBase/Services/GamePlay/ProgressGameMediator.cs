@@ -11,13 +11,10 @@ namespace CodeBase.Services.GamePlay
 
         public void ActiveLevel(int levelIndex)
         {
-            Debug.Log($"[ProgressGameMediator] ActiveLevel({levelIndex}). _locationHandler null? {_locationHandler == null}");
+            _levelProgressHandler.ResetForNewLevel();
             _locationHandler.ActiveLevel(levelIndex);
         }
 
-        public void LevelComplete()
-        {
-            _locationHandler.PassLevel();
-        }
+        public void LevelComplete() => _locationHandler.PassLevel();
     }
 }

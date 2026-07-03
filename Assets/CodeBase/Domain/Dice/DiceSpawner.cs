@@ -12,6 +12,7 @@ namespace CodeBase.Domain.Dice
     {
         public List<Dice> SpawnedDice => _spawnedDices;
         public event Action SpawnFinished;
+        public event Action<Dice> DiceSpawned;
         [SerializeField] private float _spawnCooldown = 0.5f;
         [SerializeField] private List<Transform> _spawnPoints;
         [SerializeField] private DiceFactory _diceFactory;
@@ -53,6 +54,7 @@ namespace CodeBase.Domain.Dice
 
                     _spawnedDices.Add(dice);
                     _spawnedCount++;
+                    DiceSpawned?.Invoke(dice);
                 }
                 yield return new WaitForSeconds(_spawnCooldown);
             }
